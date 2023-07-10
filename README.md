@@ -17,7 +17,7 @@
 ## RN
 
 - [x] O usuário não deve poder se cadastrar com um email duplicado
-- [ ] O usuário não pode fazer dois check-ins no mesmo dia;
+- [x] O usuário não pode fazer dois check-ins no mesmo dia;
 - [ ] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
 - [ ] O check-in só pode ser validado até 20 minutos após criado;
 - [ ] O check-in só pode ser validado por administradores;
