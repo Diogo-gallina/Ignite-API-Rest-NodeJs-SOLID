@@ -15,14 +15,27 @@ describe('Check-in Use Case', () => {
     })
 
     it('should be able to check in', async () => {
-        const email = 'johndoe@gmail.com'
-
         const { checkIn } = await sut.execute({
             gymId: 'gym-01',
             userId: 'user-01'
         });
 
         expect(checkIn.id).toEqual(expect.any(String));
-    })
+    });
 
-})
+    it('should not be able to check in twice in the same day', async () => {
+        await sut.execute({
+            gymId: 'gym-01',
+            userId: 'user-01'
+        })
+
+        await expect(() => 
+            sut.execute({
+                gymId: 'gym-01',
+                userId: 'user-01'
+            })
+        ).rejects.toBeInstanceOf(Error);
+    });
+
+
+});
