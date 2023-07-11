@@ -6,7 +6,7 @@ import { GetResult } from '@prisma/client/runtime';
 
 export class PrismaUsersRepository implements UsersRepository{
 
-    findById(id: string): Promise<(GetResult<{ id: string; name: string; email: string; password_hash: string; created_at: Date; }, unknown> & {}) | null> {
+    findById(id: string) {
         throw new Error('Method not implemented.');
     }
     
