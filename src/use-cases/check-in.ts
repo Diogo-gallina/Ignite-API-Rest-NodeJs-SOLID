@@ -29,9 +29,8 @@ export class CheckInUseCase {
   }: CheckInUseCaseRequest): Promise<CheckInUseCaseResponse> {
     const gym = await this.gymsRepository.findById(gymId);
 
-    if (!gym) {
-      throw new ResourceNotFoundError();
-    }
+    if (!gym) throw new ResourceNotFoundError();
+    
 
     const distance = getDistanceBetweenCoordinates(
       { latitude: userLatitude, longitude: userLongitude },
@@ -40,18 +39,15 @@ export class CheckInUseCase {
 
     const MAX_DISTANCE_IN_KILOMETERS = 0.1;
 
-    if (distance > MAX_DISTANCE_IN_KILOMETERS) {
-      throw new Error();
-    }
+    if (distance > MAX_DISTANCE_IN_KILOMETERS) throw new Error();
+
 
     const checkInOnSameDate = await this.checkInsRepository.findByUserIdOnDate(
       userId,
       new Date()
     );
 
-    if (checkInOnSameDate) {
-      throw new Error();
-    }
+    if (checkInOnSameDate) throw new Error();
 
     const checkIn = await this.checkInsRepository.create({
       user_id: userId,
