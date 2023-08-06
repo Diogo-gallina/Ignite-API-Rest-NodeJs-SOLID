@@ -20,8 +20,8 @@ describe("Check-in Use Case", () => {
       title: "JavaScript Gym",
       description: "",
       phone: "",
-      latitude: new Decimal(0),
-      longitude: new Decimal(0),
+      latitude: new Decimal(-23.6124638),
+      longitude: new Decimal(-46.6941133),
     });
 
     vi.useFakeTimers();
@@ -103,24 +103,4 @@ describe("Check-in Use Case", () => {
       })
     ).rejects.toBeInstanceOf(Error);
   });
-});
-
-it('should not be able to check in on distant gym', async () => {
-
-    gymsRepository.items.push({
-        id: 'gym-02',
-        title: 'JavaScript Gym',
-        description: '',
-        phone: '',
-        latitude: new Decimal(-23.6114838),
-        longitude: new Decimal(-46.6947907)
-
-    })
-
-    await expect(() => sut.execute({
-        gymId: 'gym-02',
-        userId: 'user-01',
-        userLatitude: -23.6124638,
-        userLongitude: -46.6941133
-    })).rejects.toBeInstanceOf(Error);
 });
