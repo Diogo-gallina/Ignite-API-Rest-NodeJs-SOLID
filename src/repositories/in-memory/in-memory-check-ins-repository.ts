@@ -8,7 +8,7 @@ import { CheckInsRepository } from "../check-ins-repository";
 export class InMemoryCheckInsRepository implements CheckInsRepository {
     public items: CheckIn[] = [];
 
-    async findByUserIdOnDare(userId: string, date: Date) {
+    async findByUserIdOnDate(userId: string, date: Date) {
         const startOfTheDay = dayjs(date).startOf('date');
         const endOfTheDay = dayjs(date).endOf('date');
 
