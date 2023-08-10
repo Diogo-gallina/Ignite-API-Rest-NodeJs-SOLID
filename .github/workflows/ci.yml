@@ -19,7 +19,7 @@ jobs:
       - name: run app
         run: |
           npm i
-          npx tsc
+          npm run build
 
       - name: run test coverage
         run: |
