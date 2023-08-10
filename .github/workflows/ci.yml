@@ -1,20 +1,20 @@
 name: Gym Pass Ci Integration
 
-on: 
-  pull_request: 
-    branches: 
+on:
+  pull_request:
+    branches:
       - main
 
-jobs: 
-  continuos-integration: 
+jobs:
+  continuos-integration:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v3
 
       - name: Using Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: run app
         run: |
@@ -24,12 +24,12 @@ jobs:
       - name: run test coverage
         run: |
           npm run test:coverage
-      
+
       - name: validate test coverage
         run: |
           coverage=$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')
           min_coverage=70
-          if(( $(echo "$coverage < $min_coverage" | bc -l) )) then
-            echo "O coverage de testes é  $coverage% e é inferior a $min_coverage%. Abortando o pull request!" 
+          if (( $(echo "$coverage < $min_coverage" | bc -l) )); then
+            echo "O coverage de testes é $coverage e é inferior a $min_coverage%. Abortando o pull request."
             exit 1
           fi
