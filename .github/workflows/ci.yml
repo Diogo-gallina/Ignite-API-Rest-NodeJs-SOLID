@@ -3,7 +3,7 @@ name: Gym Pass Ci Integration
 on: 
   pull_request: 
     branches: 
-      - master
+      - main
 
 jobs: 
   continuos-integration: 
