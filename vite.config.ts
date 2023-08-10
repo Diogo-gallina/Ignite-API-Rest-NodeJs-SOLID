@@ -6,6 +6,7 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ["json-summary", "json", "lcov"],
+      exclude: ['build'],
     },
   },
 });
