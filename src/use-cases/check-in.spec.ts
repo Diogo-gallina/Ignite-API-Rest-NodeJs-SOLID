@@ -15,7 +15,7 @@ describe("Check-in Use Case", () => {
     gymsRepository = new InMemoryGymsRepository();
     sut = new CheckInUseCase(checkInRepository, gymsRepository);
 
-    gymsRepository.items.push({
+    gymsRepository.items.push({   
       id: "gym-01",
       title: "JavaScript Gym",
       description: "",
