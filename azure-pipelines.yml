@@ -17,7 +17,6 @@ jobs:
   steps:
   - checkout: self
 
-
   - task: NodeTool@0
     inputs:
       versionSpec: '20.x'
